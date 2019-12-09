@@ -1,0 +1,12 @@
+if [ ! -d "./target" ];
+then
+	echo "please run setup and try again"
+	exit
+fi
+JAR_FILE=$(find ./target -type f -name "*.jar")
+if [[ -z "$JAR_FILE" ]];
+then
+	echo "cant find jar file, please run setUp and try again"
+fi
+java -jar $JAR_FILE $1
+exit
