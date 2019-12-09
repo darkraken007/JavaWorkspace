@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="triangle" class="main.sevenplus.TraingleAWByType" autowire="byName" ><!-- will get auto wired with beans with same name as property -->
+	</bean> <!-- autowire="byType" only works when there is only one property of one type and  one bean of the same type is defined -->
+	
+	
+	<bean id="pointA" class="main.sevenplus.Point" >
+		<constructor-arg value="0" />
+		<constructor-arg value="0" />
+	</bean>
+	
+	<bean id="color" class="main.sevenplus.Color">
+		<constructor-arg value="green" />
+	</bean>
+	
+	
+
+</beans>

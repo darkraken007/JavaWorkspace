@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="triangle" class="main.beanannotations.Triangle" >
+<!-- referencing another bean as property, this reference can be name or id or alias -->
+		<property name="pointA">
+			<ref bean="pointZero" />   
+		</property>
+		<property name="pointB" >
+			<bean class="main.sevenplus.Point" >  <!-- inner bean, no need to specify id since its not accessed by any other bean -->
+				<constructor-arg value="-20" />
+				<constructor-arg value="0" />
+			</bean>
+		</property>
+		<property name="pointC">
+			<ref bean="pointTwo" />   
+		</property>
+		<property name="refBean">
+			<idref bean="pointTwo"/>   <!-- idref just passes name of referenced bean to calling beans constructor and spring validates the existence of it before sending  -->
+		</property>
+	</bean>
+	
+	<bean id="pointZero" class="main.sevenplus.Point" >
+		<constructor-arg value="0" />
+		<constructor-arg value="0" />
+	</bean>
+	<bean id="pointTwo" class="main.sevenplus.Point" name="abcd123" >
+		<constructor-arg value="0" />
+		<constructor-arg value="20" />
+	</bean>
+	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
+	<alias name="triangle" alias="triangle-alias"/>
+</beans>

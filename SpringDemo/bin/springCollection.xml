@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="triangleCollection" class="main.collections.TriangleCollections" >
+		<property name="points">
+			<list>
+				<ref bean="pointZero"/>
+				<ref bean="pointOne" />
+				<ref bean="pointTwo" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="pointZero" class="main.sevenplus.Point" >
+		<constructor-arg value="0" />
+		<constructor-arg value="0" />
+	</bean>
+	<bean id="pointOne" class="main.sevenplus.Point"  >
+		<constructor-arg value="-20" />
+		<constructor-arg value="0" />
+	</bean>
+	<bean id="pointTwo" class="main.sevenplus.Point"  >
+		<constructor-arg value="0" />
+		<constructor-arg value="20" />
+	</bean>
+</beans>

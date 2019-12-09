@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="triangle" class="main.five6.Triangle" >
+		<!--<property name="type" value="Equilateral"/> --> <!--  setter injection - uses setter function to inject -->
+		<constructor-arg value="Iscosles"/>  <!--  constructor injection - uses constructor to set -->
+		<constructor-arg index="1" value="9" /> <!--  index is optional -->
+	</bean>
+	
+	<bean id="triangleSingleConstructorInt" class="main.five6.Triangle" >
+		<!-- <constructor-arg type="int" value="9" /> -->
+		<constructor-arg type="java.lang.String" value="Equilateral" /><!--  type needs to be specified in case there are multiple constructors with same number of arguments -->
+	</bean>
+</beans>

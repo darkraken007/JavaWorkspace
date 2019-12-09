@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="triangle" class="main.inheritance.Triangle" abstract="true" > <!-- spring wont load this bean by default. cant instantiate as well -->
+		<property name="pointA" ref="pointZero"/>
+	</bean>
+	
+	<bean id="triangle1" class="main.inheritance.Triangle" parent="triangle">
+		<property name="pointB" ref="pointOne"/>
+		<property name="pointC" ref="pointTwo" />
+	</bean>
+	
+	
+	<bean id="triangleCollections" class="main.inheritance.TriangleCollections" abstract="true" >
+		<property name="points">
+			<list>
+				<ref bean ="pointZero" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="triangleCollections1" class="main.inheritance.TriangleCollections" parent="triangleCollections" >
+		<property name="points">
+			<list merge="true"> <!-- merges with collection from parent bean -->
+				<ref bean ="pointOne" />
+				<ref bean ="pointTwo" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="pointZero" class="main.inheritance.Point" >
+		<constructor-arg value="0" />
+		<constructor-arg value="0" />
+	</bean>
+	
+	<bean id ="pointOne" class="main.inheritance.Point" >
+		<constructor-arg value="-20" />
+		<constructor-arg value="0" />
+	</bean>
+	
+	<bean id="pointTwo" class="main.inheritance.Point" name="abcd123" >
+		<constructor-arg value="0" />
+		<constructor-arg value="20" />
+	</bean>
+	
+	<alias name="triangle" alias="triangle-alias"/>
+</beans>
